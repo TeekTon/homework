@@ -4,11 +4,18 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.List;
+
 import cn.teek.base.utils.StringUtils;
 import cn.teek.wechat.R;
 import cn.teek.wechat.base.BaseFragment;
 import cn.teek.wechat.image.ImageLoaderUtils;
+import cn.teek.wechat.model.TweetBean;
 import cn.teek.wechat.model.UserInfoBean;
+import cn.teek.wechat.module.moments.adapter.TweetsAdapter;
 
 public class MomentsFragment extends BaseFragment<MomentsPresenter> implements MomentsContact.View {
 
@@ -18,6 +25,10 @@ public class MomentsFragment extends BaseFragment<MomentsPresenter> implements M
     private ImageView mIvHeader;
     //昵称
     private TextView mTvNick;
+    //推文列表
+    private RecyclerView mRvTweets;
+    //推文数据适配器
+    private TweetsAdapter mAdapter;
 
     @Override
     protected int getLayoutId() {
@@ -29,6 +40,8 @@ public class MomentsFragment extends BaseFragment<MomentsPresenter> implements M
         mIvAvatar = rootView.findViewById(R.id.iv_avatar);
         mIvHeader = rootView.findViewById(R.id.iv_header);
         mTvNick = rootView.findViewById(R.id.tv_nick);
+        mRvTweets = rootView.findViewById(R.id.rv_tweets);
+        mRvTweets.setLayoutManager(new LinearLayoutManager(getActivity()));
         mPresenter.onStart();
     }
 
@@ -47,7 +60,9 @@ public class MomentsFragment extends BaseFragment<MomentsPresenter> implements M
     }
 
     @Override
-    public void updateTweeList() {
-
+    public void updateTweeList(List<TweetBean> tweetBeans) {
+        if (getActivity() == null) return;
+        mAdapter = new TweetsAdapter(getActivity(), tweetBeans);
+        mRvTweets.setAdapter(mAdapter);
     }
 }

@@ -23,7 +23,7 @@ public abstract class BaseSingleObserver<T> implements SingleObserver<T> {
 
     @Override
     public void onSuccess(T t) {
-        LogUtils.d(TAG, t.toString());
+        LogUtils.d(TAG, t== null ? "no data！！！" :t.toString());
         handleSuccess(t);
     }
 

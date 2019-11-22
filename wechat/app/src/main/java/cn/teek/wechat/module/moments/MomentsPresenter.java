@@ -1,5 +1,9 @@
 package cn.teek.wechat.module.moments;
 
+import java.util.List;
+
+import cn.teek.base.utils.CommonUtils;
+import cn.teek.wechat.model.TweetBean;
 import cn.teek.wechat.model.UserInfoBean;
 import cn.teek.wechat.network.ApiManager;
 import cn.teek.wechat.network.BaseSingleObserver;
@@ -25,12 +29,26 @@ public class MomentsPresenter implements MomentsContact.Presenter {
                     public void handleSuccess(UserInfoBean userInfoBean) {
                         if (userInfoBean == null) return;
                         mMomentsView.updateUserInfo(userInfoBean);
+                        getTweetList();
                     }
                 });
     }
 
     @Override
     public void getTweetList() {
+        ApiManager.getInstance().getCommonApi()
+                .getUserTweets("jsmith")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new BaseSingleObserver<List<TweetBean>>() {
+                    @Override
+                    public void handleSuccess(List<TweetBean> tweetBeans) {
+                        if (CommonUtils.isListEmpty(tweetBeans)) {
+                            return;
+                        }
+                        mMomentsView.updateTweeList(tweetBeans);
+                    }
+                });
 
     }
 

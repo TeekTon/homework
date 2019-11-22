@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--宽高尺寸-->
     <dimen name="d320">320dp</dimen>
     <dimen name="d20">20dp</dimen>
     <dimen name="d100">100dp</dimen>
+    <dimen name="d60">60dp</dimen>
+    <dimen name="d5">5dp</dimen>
+    <dimen name="d10">10dp</dimen>
+    <dimen name="s24">24sp</dimen>
+    <dimen name="d2">2dp</dimen>
+    <dimen name="d15">15dp</dimen>
+
+    <!--字体大小-->
+    <dimen name="s8">8sp</dimen>
     <dimen name="s16">16sp</dimen>
 </resources>
