@@ -1,6 +1,7 @@
 package cn.teek.wechat.image;
 
 import android.content.Context;
+import android.widget.ImageView;
 
 /**
  * 图片加载框架 策略模式
@@ -57,6 +58,22 @@ public class ImageLoaderUtils {
      * @param imageLoader
      */
     public void loadImage(Context context, ImageLoader imageLoader) {
+        imageLoaderStrategy.loadImage(context, imageLoader);
+    }
+
+    /**
+     * @param context   context
+     * @param path      图片路径uri
+     * @param imageView 控件
+     */
+    public void loadImage(Context context, String path, ImageView imageView) {
+        //由于http无法使用所以转为https
+        path = path.replace("http", "https");
+        ImageLoader imageLoader =
+                new ImageLoader.Builder()
+                        .url(path)
+                        .imageView(imageView)
+                        .bulid();
         imageLoaderStrategy.loadImage(context, imageLoader);
     }
 }

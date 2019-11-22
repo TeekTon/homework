@@ -17,6 +17,12 @@ import cn.teek.wechat.base.mvp.BasePresenter;
 public abstract class BaseFragment<T extends BasePresenter> extends Fragment {
     protected T mPresenter;
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        initPresenter();
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

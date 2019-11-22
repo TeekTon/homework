@@ -13,7 +13,7 @@ import retrofit2.http.Path;
  */
 public interface CommonApi {
     //对应服务端的url
-    String BASE_URL = "http://thoughtworks-ios.herokuapp.com";
+    String BASE_URL = "https://thoughtworks-ios.herokuapp.com";
 
     //获取指定用户信息
     @GET("/user/{name}")

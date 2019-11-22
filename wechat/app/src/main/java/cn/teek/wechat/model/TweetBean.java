@@ -7,6 +7,16 @@ import java.util.List;
  */
 public class TweetBean {
 
+    @Override
+    public String toString() {
+        return "TweetBean{" +
+                "content='" + content + '\'' +
+                ", sender=" + sender +
+                ", images=" + images +
+                ", comments=" + comments +
+                '}';
+    }
+
     /**
      * content : 沙发！
      * images : [{"url":"https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRDy7HZaHxn15wWj6pXE4uMKAqHTC_uBgBlIzeeQSj2QaGgUzUmHg"},{"url":"https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTlJRALAf-76JPOLohBKzBg8Ab4Q5pWeQhF5igSfBflE_UYbqu7"},{"url":"http://i.ytimg.com/vi/rGWI7mjmnNk/hqdefault.jpg"}]

@@ -18,7 +18,7 @@ public class ImageLoader {
         this.type = builder.type;
         this.url = builder.url;
         this.placeHolder = builder.placeHolder;
-        this.ImageView = builder.ImageView;
+        this.ImageView = builder.imageView;
         this.wifiStrategy = builder.wifiStrategy;
     }
 
@@ -42,18 +42,18 @@ public class ImageLoader {
         return wifiStrategy;
     }
 
-    public static class Builder{
+    public static class Builder {
         private int type;  //类型 (大图，中图，小图)
         private String url; //需要解析的url
         private int placeHolder; //当没有成功加载的时候显示的图片
-        private ImageView ImageView; //ImageView
+        private ImageView imageView; //ImageView
         private int wifiStrategy;//加载策略，是否在wifi下才载
 
         public Builder() {
             this.type = ImageLoaderUtils.PIC_SMALL;
             this.url = "";
             this.placeHolder = R.mipmap.ic_launcher;
-            this.ImageView = null;
+            this.imageView = null;
             this.wifiStrategy = ImageLoaderUtils.LOAD_STRATEGY_NORMAL;
         }
 
@@ -72,8 +72,8 @@ public class ImageLoader {
             return this;
         }
 
-        public Builder ImageView(ImageView ImageView) {
-            this.ImageView = ImageView;
+        public Builder imageView(ImageView imageView) {
+            this.imageView = imageView;
             return this;
         }
 
@@ -81,7 +81,8 @@ public class ImageLoader {
             this.wifiStrategy = wifiStrategy;
             return this;
         }
-        public ImageLoader bulid(){
+
+        public ImageLoader bulid() {
             return new ImageLoader(this);
         }
     }

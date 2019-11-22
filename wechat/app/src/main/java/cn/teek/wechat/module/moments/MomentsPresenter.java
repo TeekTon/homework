@@ -36,6 +36,6 @@ public class MomentsPresenter implements MomentsContact.Presenter {
 
     @Override
     public void onStart() {
-
+        getUserInfo();
     }
 }

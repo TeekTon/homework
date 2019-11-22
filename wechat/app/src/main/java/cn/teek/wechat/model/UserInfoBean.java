@@ -7,6 +7,16 @@ import com.google.gson.annotations.SerializedName;
  */
 public class UserInfoBean {
 
+    @Override
+    public String toString() {
+        return "UserInfoBean{" +
+                "profileImage='" + profileImage + '\'' +
+                ", avatar='" + avatar + '\'' +
+                ", nick='" + nick + '\'' +
+                ", username='" + username + '\'' +
+                '}';
+    }
+
     /**
      * profile-image : http://img2.findthebest.com/sites/default/files/688/media/images/Mingle_159902_i0.png
      * avatar : http://info.thoughtworks.com/rs/thoughtworks2/images/glyph_badge.png

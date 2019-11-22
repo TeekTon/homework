@@ -7,6 +7,7 @@ import android.widget.TextView;
 import cn.teek.base.utils.StringUtils;
 import cn.teek.wechat.R;
 import cn.teek.wechat.base.BaseFragment;
+import cn.teek.wechat.image.ImageLoaderUtils;
 import cn.teek.wechat.model.UserInfoBean;
 
 public class MomentsFragment extends BaseFragment<MomentsPresenter> implements MomentsContact.View {
@@ -38,7 +39,11 @@ public class MomentsFragment extends BaseFragment<MomentsPresenter> implements M
 
     @Override
     public void updateUserInfo(UserInfoBean userInfoBean) {
+        if (getActivity() == null) return;
         mTvNick.setText(StringUtils.toNotNullStr(userInfoBean.getNick()));
+
+        ImageLoaderUtils.getInstance().loadImage(getActivity(), userInfoBean.getProfileImage(), mIvHeader);
+        ImageLoaderUtils.getInstance().loadImage(getActivity(), userInfoBean.getAvatar(), mIvAvatar);
     }
 
     @Override
