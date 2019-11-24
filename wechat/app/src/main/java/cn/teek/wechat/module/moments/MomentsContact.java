@@ -10,13 +10,16 @@ import cn.teek.wechat.model.UserInfoBean;
 public interface MomentsContact {
     interface Presenter extends BasePresenter {
         void getUserInfo();
-        void getTweetList();
+        void refreshTweetList();
+        void loadMoreTweets();
     }
 
     interface View extends BaseView {
         void updateUserInfo(UserInfoBean userInfoBean);
 
-        void updateTweeList(List<TweetBean> tweetBeans);
+        void refreshTweeList(List<TweetBean> tweetBeans);
+
+        void onLoadMoreTweetsFinished(List<TweetBean> batchFiveTweets);
     }
 
 }

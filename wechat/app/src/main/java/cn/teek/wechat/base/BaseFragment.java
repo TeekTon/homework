@@ -41,7 +41,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment {
     /**
      * 初始化监听
      */
-    private void initListeners() {
+    protected void initListeners() {
 
     }
 
