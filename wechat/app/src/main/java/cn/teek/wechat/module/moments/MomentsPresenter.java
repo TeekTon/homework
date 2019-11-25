@@ -110,7 +110,7 @@ public class MomentsPresenter implements MomentsContact.Presenter {
      */
     @Override
     public void loadMoreTweets() {
-        Single.timer(3, TimeUnit.SECONDS)
+        Single.timer(1, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(integer -> mMomentsView.onLoadMoreTweetsFinished(batchFiveTweets()));

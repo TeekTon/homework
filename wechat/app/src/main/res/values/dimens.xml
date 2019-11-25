@@ -10,10 +10,10 @@
     <dimen name="s24">24sp</dimen>
     <dimen name="d2">2dp</dimen>
     <dimen name="d15">15dp</dimen>
+    <dimen name="d200">200dp</dimen>
+    <dimen name="d140">140dp</dimen>
 
     <!--字体大小-->
     <dimen name="s8">8sp</dimen>
     <dimen name="s16">16sp</dimen>
-    <dimen name="d200">200dp</dimen>
-    <dimen name="d140">140dp</dimen>
 </resources>

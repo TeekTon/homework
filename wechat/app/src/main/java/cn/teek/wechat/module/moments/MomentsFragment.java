@@ -4,6 +4,7 @@ import android.view.View;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,7 @@ public class MomentsFragment extends BaseFragment<MomentsPresenter> implements M
     private RecyclerView mRvTweets;
     //推文数据适配器
     private TweetsAdapter mAdapter;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
 
     @Override
     protected int getLayoutId() {
@@ -33,12 +35,15 @@ public class MomentsFragment extends BaseFragment<MomentsPresenter> implements M
     @Override
     protected void initViews(View rootView) {
         mRvTweets = rootView.findViewById(R.id.rv_tweets);
+        mSwipeRefreshLayout = rootView.findViewById(R.id.swipeRefreshLayout);
+        mSwipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.colorPrimary));
 
         //初始列表
         mRvTweets.setLayoutManager(new LinearLayoutManager(getActivity()));
         mAdapter = new TweetsAdapter(getActivity(), new ArrayList<>());
         mRvTweets.setAdapter(mAdapter);
 
+        mSwipeRefreshLayout.setRefreshing(true);
         mPresenter.onStart();
     }
 
@@ -49,6 +54,12 @@ public class MomentsFragment extends BaseFragment<MomentsPresenter> implements M
             public void onBottom() {
                 LogUtils.d(TAG, "滑动到了底部");
                 mPresenter.loadMoreTweets();
+            }
+        });
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mPresenter.refreshTweetList();
             }
         });
     }
@@ -67,7 +78,7 @@ public class MomentsFragment extends BaseFragment<MomentsPresenter> implements M
     @Override
     public void refreshTweeList(List<TweetBean> tweetBeans) {
         if (getActivity() == null) return;
-
+        mSwipeRefreshLayout.setRefreshing(false);
         if (CommonUtils.isListEmpty(tweetBeans)) {
             return;
         }
