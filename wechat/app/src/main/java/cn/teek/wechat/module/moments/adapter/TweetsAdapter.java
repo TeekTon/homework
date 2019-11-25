@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cn.teek.base.utils.CommonUtils;
@@ -18,6 +19,7 @@ import cn.teek.wechat.R;
 import cn.teek.wechat.image.ImageLoaderUtils;
 import cn.teek.wechat.model.TweetBean;
 import cn.teek.wechat.model.UserInfoBean;
+import cn.teek.wechat.widgets.TweetImagesLayout;
 
 /**
  * 推文列表数据适配器
@@ -63,6 +65,12 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.MyViewHold
             }
 
             //更新推文图片
+            if (CommonUtils.isListEmpty(tweetBean.getImages())) {
+                holder.tweetImagesLayout.setVisibility(View.GONE);
+            } else {
+                holder.tweetImagesLayout.setVisibility(View.VISIBLE);
+                holder.tweetImagesLayout.setImageUrls(toImageStrList(tweetBean.getImages()));
+            }
 
             TweetBean.SenderEntity sender = tweetBean.getSender();
             if (sender == null) return;
@@ -71,6 +79,16 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.MyViewHold
             //更新推文发布者头像
             ImageLoaderUtils.getInstance().loadImage(mContext, sender.getAvatar(), holder.ivAvatar);
         }
+    }
+
+    private List<String> toImageStrList(List<TweetBean.ImagesEntity> images) {
+        if (CommonUtils.isListEmpty(images))
+            return null;
+        ArrayList<String> imageStrList = new ArrayList<String>();
+        for (TweetBean.ImagesEntity entity : images) {
+            imageStrList.add(entity.getUrl());
+        }
+        return imageStrList;
     }
 
     @Override
@@ -127,6 +145,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.MyViewHold
 
     static class MyViewHolder extends RecyclerView.ViewHolder {
 
+        private TweetImagesLayout tweetImagesLayout;
         private ImageView ivAvatar;
         private TextView tvContent;
         private TextView tvNick;
@@ -136,6 +155,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.MyViewHold
             tvNick = itemView.findViewById(R.id.tv_nick);
             tvContent = itemView.findViewById(R.id.tv_content);
             ivAvatar = itemView.findViewById(R.id.iv_avatar);
+            tweetImagesLayout = itemView.findViewById(R.id.til_moments);
         }
     }
 }
