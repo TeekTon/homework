@@ -13,8 +13,8 @@ import cn.teek.base.utils.CommonUtils;
 import cn.teek.base.utils.LogUtils;
 import cn.teek.wechat.R;
 import cn.teek.wechat.base.BaseFragment;
-import cn.teek.wechat.model.TweetBean;
-import cn.teek.wechat.model.UserInfoBean;
+import cn.teek.wechat.data.bean.TweetBean;
+import cn.teek.wechat.data.bean.UserInfoBean;
 import cn.teek.wechat.module.moments.adapter.TweetsAdapter;
 import cn.teek.wechat.widgets.OnRecyclerViewScrollListener;
 
@@ -82,13 +82,7 @@ public class MomentsFragment extends BaseFragment<MomentsPresenter> implements M
         if (CommonUtils.isListEmpty(tweetBeans)) {
             return;
         }
-
-        if (mAdapter == null) {
-            mAdapter = new TweetsAdapter(getActivity(), tweetBeans);
-            mRvTweets.setAdapter(mAdapter);
-        } else {
-            mAdapter.refreshData(tweetBeans);
-        }
+        mAdapter.refreshData(tweetBeans);
     }
 
     @Override

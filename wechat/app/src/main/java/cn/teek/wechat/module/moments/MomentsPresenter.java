@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import cn.teek.base.utils.CommonUtils;
-import cn.teek.wechat.model.TweetBean;
-import cn.teek.wechat.model.UserInfoBean;
+import cn.teek.wechat.data.bean.TweetBean;
+import cn.teek.wechat.data.bean.UserInfoBean;
 import cn.teek.wechat.network.ApiManager;
 import cn.teek.wechat.network.BaseSingleObserver;
 import io.reactivex.Single;

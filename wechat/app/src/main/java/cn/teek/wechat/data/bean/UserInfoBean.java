@@ -1,4 +1,4 @@
-package cn.teek.wechat.model;
+package cn.teek.wechat.data.bean;
 
 import com.google.gson.annotations.SerializedName;
 

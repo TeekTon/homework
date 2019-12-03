@@ -4,8 +4,8 @@ import java.util.List;
 
 import cn.teek.wechat.base.mvp.BasePresenter;
 import cn.teek.wechat.base.mvp.BaseView;
-import cn.teek.wechat.model.TweetBean;
-import cn.teek.wechat.model.UserInfoBean;
+import cn.teek.wechat.data.bean.TweetBean;
+import cn.teek.wechat.data.bean.UserInfoBean;
 
 public interface MomentsContact {
     interface Presenter extends BasePresenter {

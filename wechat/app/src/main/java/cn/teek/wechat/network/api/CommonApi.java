@@ -2,8 +2,8 @@ package cn.teek.wechat.network.api;
 
 import java.util.List;
 
-import cn.teek.wechat.model.TweetBean;
-import cn.teek.wechat.model.UserInfoBean;
+import cn.teek.wechat.data.bean.TweetBean;
+import cn.teek.wechat.data.bean.UserInfoBean;
 import io.reactivex.Single;
 import retrofit2.http.GET;
 import retrofit2.http.Path;

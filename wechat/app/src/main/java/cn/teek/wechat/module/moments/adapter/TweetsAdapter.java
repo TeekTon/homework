@@ -17,8 +17,8 @@ import java.util.List;
 import cn.teek.base.utils.CommonUtils;
 import cn.teek.wechat.R;
 import cn.teek.wechat.image.ImageLoaderUtils;
-import cn.teek.wechat.model.TweetBean;
-import cn.teek.wechat.model.UserInfoBean;
+import cn.teek.wechat.data.bean.TweetBean;
+import cn.teek.wechat.data.bean.UserInfoBean;
 import cn.teek.wechat.widgets.TweetImagesLayout;
 
 /**
